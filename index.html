@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jomer's ITC Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">   
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html">HOME</a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="homework 1.html">HOMEWORK #1</a></li>
+                    <li><a href="homework 2.html">HOMEWORK #2</a></li>
+                    <li><a href="homework 3.html">HOMEWORK #3</a></li>
+                    <li><a href="homework 4.html">HOMEWORK #4</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+<div class="text-box">
+    <h1>Jomer R. Mandap </h1>
+    <span class="subject"><br> CS1130 - Introduction to Computing 4-310</span>
+    <p>This website will be used to access my homework submissions in regards to this class. 
+    <br>Please hover on the navigation bar of the website to access it.</p>
+    <a href="https://www.indy100.com/media-library/people-on-tiktok-were-debating-which-emoticon-he-resembled-more.png?id=28060080&width=500&quality=80" target="_blank" class="hero-btn">HEHE</a>
+</div>
+
+</section>
+
+<!-- JS Script for Menu -->
+
+<script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+</script>
+
+
+</body>
+</html>

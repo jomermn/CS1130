@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jomer's ITC Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">   
+</head>
+<body>
+    <section class="sub-header3">
+        <nav>
+            <a href="index.html">HOME</a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="homework 1.html">HOMEWORK #1</a></li>
+                    <li><a href="homework 2.html">HOMEWORK #2</a></li>
+                    <li><a href="homework 3.html">HOMEWORK #3</a></li>
+                    <li><a href="homework 4.html">HOMEWORK #4</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>NTH FACTORIAL, SUM, AND AVERAGE CALCULATOR</h1>
+        <p1>The Nth factorial, the first N numbers' sum, and the first N numbers' average are all computed using this calculator program.
+            <br> goal of this project is to highlight the use of while, do while, and for loops in JavaScript.</p1>
+</section>
+
+<section class="calc">
+    <i> <p id="h3title">CALCULATOR</p> 
+       
+        <i> <p class="w3-small">INPUT A NUMBER</p> 
+       <input id="n1" name="n1" type="number" placeholder="insert here">      
+        <p class="pconvert">CONVERT IT TO:</p>    
+        <p class="fact" onclick=factorial()>FACTORIAL!</p>  
+        <p class="sumn" onclick=sumNumbers()>SUM OF THE N NUMBRES</p>  
+        <p class="aven" onclick=averegeSum()>AVERAGE SUM OF THE FIRST N NUMBERS</p>
+
+        <p>
+            <label for="ans" id="answer">  0 = </label>
+            <input id="ans" name="ans" type="number" readonly>
+        </p>
+</section>
+
+<!--JS Script for Homework #3 -->
+
+<script>
+    function factorial()
+{
+    var z,n,b;
+    b = 1;
+    n = document.getElementById("n1").value;
+    z = 1;
+    while(b <= n )
+    {  
+        z = z * b;   
+        b++;
+    }
+    document.getElementById("answer").innerHTML='from ' +n+  ' =';
+    document.getElementById("ans").value=z;
+}
+</script>
+
+
+<script>
+    function sumNumbers()
+{
+     var z,n;
+    b = document.getElementById("n1").value;
+    n = document.getElementById("n1").value;
+    z = "";
+do {  
+        ++b
+        z = (n*b)/2;   
+        
+        
+    }
+while(n > z)
+   
+    document.getElementById("answer").innerHTML='from ' +n+  ' =';
+    document.getElementById("ans").value=z;
+}
+</script>
+
+
+<script>
+     function averegeSum()
+{
+     var z,n;
+    b = document.getElementById("n1").value;
+    n = document.getElementById("n1").value;
+    z = "";
+do {  
+        ++b
+        z = (n*b)/2;   
+    }
+while(n > z)
+    document.getElementById("answer").innerHTML='from ' +n+  ' =';
+    document.getElementById("ans").value=z/n;
+}
+</script>

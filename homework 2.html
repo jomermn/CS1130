@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jomer's ITC Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">   
+</head>
+<body>
+    <section class="sub-header2">
+        <nav>
+            <a href="index.html">HOME</a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="homework 1.html">HOMEWORK #1</a></li>
+                    <li><a href="homework 2.html">HOMEWORK #2</a></li>
+                    <li><a href="homework 3.html">HOMEWORK #3</a></li>
+                    <li><a href="homework 4.html">HOMEWORK #4</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>INCOME TAX CALCULATOR</h1>
+        <p1>With the use of the graduated income tax table provided by the TRAIN law, this program's tax calculator application may be used to determine the income tax due on a particular amount of net taxable income. 
+            <br>The Philippine peso (₱) is the sole currency supported by this tool. The goal of this project is to highlight the use of conditional statements in JavaScript.</p1>
+</section>
+
+<section class="taxcalc">
+    <p id="tax">INPUT TAXABLE INCOME</p> 
+        <input id="n1" name="n1" type="number" placeholder="amount">   
+        <p> </p>          
+         <p class="compute-btn" onclick=ansFeet()>COMPUTE</p>
+
+         <p>
+            <label for="ans" id="answer">  TAX:</label>
+            <input id="answ" name="ans" type="number" readonly>
+        
+         </p>  
+
+</section>
+
+<!--JS Script for Homework #2 -->
+
+<script>
+    
+    function ansFeet()
+{
+    x = document.getElementById("n1").value*1;
+    let y;
+    
+    if (x > 8000000) {
+      y = (document.getElementById("n1").value-8000000)*(35/100)+2410000;
+   } else if (x > 2000000){
+      y = (document.getElementById("n1").value-2000000)*(32/100)+490000;
+   } else if (x > 800000) {
+      y = (document.getElementById("n1").value-800000)*(30/100)+130000;
+   } else if (x > 400000) {  
+      y = (document.getElementById("n1").value-400000)*(25/100)+30000;
+   } else if (x > 250000) {
+      y = (document.getElementById("n1").value-250000)*(20/100);
+   } else  {
+      y = document.getElementById("n1").value*0;
+   }      
+    
+    
+document.getElementById("answer").innerHTML='Taxable Income from ' +x+  ' is =';
+    document.getElementById("answ").value=y;
+}
+</script>
+
+

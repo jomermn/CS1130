@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jomer's ITC Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">   
+</head>
+<body>
+    <section class="sub-header2">
+        <nav>
+            <a href="index.html">HOME</a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="homework 1.html">HOMEWORK #1</a></li>
+                    <li><a href="homework 2.html">HOMEWORK #2</a></li>
+                    <li><a href="homework 3.html">HOMEWORK #3</a></li>
+                    <li><a href="homework 4.html">HOMEWORK #4</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>SIMPLE PAYROLL</h1>
+        <p1>This program is a basic payroll program that displays the entries in a table by accepting sets of input as objects for the employees and their associated net pay. 
+            <br>The goal of this project is to highlight JavaScript use.</p1>
+</section>
+
+<section class="ppayroll">
+    <div align="center" class="w3-row-padding w3-pale-blue w3-padding-64 w3-container" id="section4">
+        <div class="w3-content">
+          <div class="w3-third w3-left-align">
+          </div>
+          <div class="w3-twothird">
+            <h1>PAYROLL</h1>
+            <h5 class="w3-padding-32">
+              <body onload = "initializecart()">
+      
+                <h4>
+                  <label for="itemdesc">Employee Name:</label>    
+                  <input id="itemdesc" name="itemdesc"></input>
+                </h4>
+                  <h5>&nbsp;</h5>
+                  <label for="qty">Days Worked:</label>
+                  <input id="qty" name="qty" type="number" oninput="computeamount()"></input>
+                  <br>
+                  <label for="price">Daily Rate:</label>
+                  <input id="price" name="price" type="number" oninput="computeamount()"></input>
+                  <h6>&nbsp;</h6>
+                  <label for="amount">Deduction Amount:</label>
+                  <input id="amount" name="amount" type="number" oninput="computeamount()"></input>
+                  <br>            
+                  <button onclick="addtocart()">Add Employee</button>
+                  
+                  <h6>&nbsp;</h6>
+      
+                  <label for="items">No. of Employee/s:</label>
+                  <input id="items" name="items" type="number" readonly></input>
+                  <br>
+                  <button onclick="clearcart()">Clear Cart</button>
+                  <!--   <button onclick="showcart()">Show Cart</button> --> 
+                  <h6>&nbsp;</h6>
+                  <label for="delitem">Delete Employee:</label>
+                  <input id="delitem" name="delitem" type="number" ></input>
+                  <br>
+                  <button onclick="deleteitem()" >Delete</button>  
+                  
+                  
+                  <p id="cart"></p>
+                    <h1>&nbsp;</h1>
+              </body>
+          </div>
+        </div>
+      
+      </div>
+</section>      
+
+<!-- JS Script for Homework #4 -->
+<script>
+     function initcart(){
+                    cart=[];
+                    document.getElementById("items").value=cart.length;
+                    document.getElementById("cart").innerHTML="";        
+                }
+                function clearcart(){
+                    var toclear;
+            
+                    toclear=confirm("Delete all item(s) from cart ?");
+            
+                    if (toclear) {
+                         initcart();
+                    }
+                        
+                }
+                function addtocart(){
+                     
+                     var cartitem = {
+                         "item": "1",
+                         "price": 0,
+                         "qty": 1,
+                         "amount": 0,
+                        "itemamount" : function itemamount(){
+                             return Math.round(this.price*this.qty*100)/100;  
+                           },
+                           "netpay" : function netpay(){
+                             return Math.round(this.price*this.qty*100)/100-this.amount;  
+                           }
+                    
+                        };
+                        
+                      cartitem.item=document.getElementById("itemdesc").value; 
+                      cartitem.qty=document.getElementById("qty").value;
+                      cartitem.price=document.getElementById("price").value;
+                      cartitem.amount=document.getElementById("amount").value;
+                     
+            
+                      console.log(cartitem.item);
+                      console.log(cartitem.qty);
+                      console.log(cartitem.price);
+                      console.log(cartitem.amount);
+                     
+                
+            
+                       cart.push(cartitem);
+            
+                      console.log(cart.length);
+                      document.getElementById("items").value=cart.length;
+            
+                      showcart();
+            
+                }
+                
+                
+
+                function deleteitem(){
+                    var todelete;
+                    var itemno;
+            
+                    itemno=document.getElementById("delitem").value;
+            
+                    todelete=confirm("Delete item no. "+itemno+"?");
+            
+                    if (todelete) {
+            
+                         cart.splice(itemno-1,1);
+                         document.getElementById("items").value=cart.length;
+                         showcart();   
+                    }
+            
+                }
+            
+                function showcart(){
+            
+                    var i,l,carttext,totalamount,ln;
+                    var theader,tbody,tb,tfooter;
+            
+                
+
+                    theader ="<thead>";
+                    theader+="<tr>";
+                    theader+="<th>No.</th>";
+                    theader+='<th style="text-align:left" >Employee Name</th>';
+                    theader+="<th>Days Worked</th>";
+                    theader+='<th style="text-align:right">Daily Rate</th>';
+                    theader+="<th>Gross Pay</th>";
+                    theader+="<th>Deduction Amount</th>";
+                    theader+="<th>Net Pay</th>";
+                    theader+="</tr>";
+                    theader+="</thead>";
+                    
+
+                    l = cart.length;
+                  
+                    
+
+                    for (i=0,totalamount=0,carttext="",tbody='';i<l;i++){
+                        ln=i+1;
+                        tbody += "<tr>"
+                            +'<td>'+ln+' </td>'
+                            +'<td>'+cart[i].item+' </td>'
+                            +'<td style="text-align:right">'+cart[i].qty+'</td>'
+                            +'<td style="text-align:right">'+cart[i].price+'</td>'
+                            +'<td style="text-align:right">'+cart[i].itemamount()+'</td>'  
+                            +'<td style="text-align:right">'+cart[i].amount+'</td>'  
+                            +'<td style="text-align:right">'+cart[i].netpay()+'</td>' 		
+                            +"</tr>";
+                        
+            
+                    }
+                    tfooter ="<tfoot>";
+                    tfooter+="<tr>";
+                     tfooter+='<th></th>';
+                    tfooter+='<th style="text-align:left"></th>';
+                    tfooter+='<th></th>';
+                    tfooter+='<th></th>';
+                    tfooter+='<th></th>';
+                    tfooter+='<th></th>';
+                    tfooter+='<th></th>';
+                    tfooter+="</tr>";
+                    tfooter+="</tfoot>";
+            
+                   console.log(theader+tbody+tfooter);
+                    document.getElementById("cart").innerHTML=
+                       '<table>'+theader+tbody+tfooter+'</table>';
+            
+            
+                }
+
+            var cart = [];
+</script>
+
+
+</script>
